@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Card</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      height:100vh;
+      overflow:hidden;
+      background: radial-gradient(circle at top, #3b0a45, #120015);
+      font-family: 'Segoe UI', cursive;
+    }
+
+    /* Stars */
+    .star {
+      position:absolute;
+      width:2px;
+      height:2px;
+      background:white;
+      border-radius:50%;
+      opacity:0.8;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity:0.2; }
+      to { opacity:1; }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position:absolute;
+      font-size:24px;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(110vh) scale(0.8);
+        opacity:1;
+      }
+      to {
+        transform: translateY(-10vh) scale(1.4);
+        opacity:0;
+      }
+    }
+
+    /* Center Card */
+    .card {
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      background: rgba(255, 192, 203, 0.15);
+      border:2px solid pink;
+      padding:40px 60px;
+      border-radius:20px;
+      text-align:center;
+      color:white;
+      box-shadow:0 0 40px rgba(255,105,180,0.6);
+      animation: glow 3s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow:0 0 20px hotpink; }
+      to { box-shadow:0 0 60px deeppink; }
+    }
+
+    h1 {
+      font-size:48px;
+      margin-bottom:10px;
+      color:#ffb6c1;
+    }
+
+    p {
+      font-size:22px;
+      color:#ffe6f2;
+    }
+
+    /* Floating teddy (emoji version) */
+    .teddy {
+      position:absolute;
+      font-size:60px;
+      animation: floatTeddy 4s ease-in-out infinite;
+    }
+
+    @keyframes floatTeddy {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-25px); }
+      100% { transform: translateY(0px); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Happy Valentine’s Day 💖</h1>
+    <p>You make my world brighter every day.</p>
+  </div>
+
+  <div class="teddy" style="left:15%; top:60%;">🧸</div>
+  <div class="teddy" style="right:15%; top:60%;">🧸</div>
+
+<script>
+  // Create stars
+  for(let i=0;i<150;i++){
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random()*100 + "vw";
+    star.style.top = Math.random()*100 + "vh";
+    star.style.animationDuration = (1+Math.random()*3)+"s";
+    document.body.appendChild(star);
+  }
+
+  // Create floating hearts
+  function createHeart(){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = ["❤️","💖","💘","💕"][Math.floor(Math.random()*4)];
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (4 + Math.random()*6) + "s";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),10000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
