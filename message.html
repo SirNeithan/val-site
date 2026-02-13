@@ -2,14 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FOR VEE 💖</title>
+
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
-      height:100vh;
+      min-height:100vh;
       overflow:hidden;
       background: radial-gradient(circle at top, #3b0a45, #120015);
-      font-family: 'san erif', cursive;
+      font-family: sans-serif;
     }
 
     /* Stars */
@@ -31,7 +34,7 @@
     /* Floating hearts */
     .heart {
       position:absolute;
-      font-size:24px;
+      font-size:20px;
       animation: floatUp linear infinite;
     }
 
@@ -54,10 +57,12 @@
       transform:translate(-50%, -50%);
       background: rgba(255, 192, 203, 0.15);
       border:2px solid pink;
-      padding:25px 60px;
+      padding:25px 20px;
       border-radius:20px;
       text-align:center;
       color:white;
+      width:90%;
+      max-width:500px;
       box-shadow:0 0 40px rgba(255,105,180,0.6);
       animation: glow 3s infinite alternate;
     }
@@ -68,27 +73,36 @@
     }
 
     h1 {
-      font-size:48px;
-      margin-bottom:10px;
+      font-size: clamp(26px, 6vw, 42px);
+      margin-bottom:15px;
       color:#ffb6c1;
     }
 
     p {
-      font-size:22px;
+      font-size: clamp(14px, 4vw, 20px);
       color:#ffe6f2;
+      line-height:1.6;
     }
 
-    /* Floating teddy (emoji version) */
+    /* Floating teddy */
     .teddy {
       position:absolute;
-      font-size:60px;
+      font-size:50px;
       animation: floatTeddy 4s ease-in-out infinite;
     }
 
     @keyframes floatTeddy {
       0% { transform: translateY(0px); }
-      50% { transform: translateY(-25px); }
+      50% { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
+    }
+
+    /* Mobile adjustments */
+    @media (max-width:600px) {
+      .teddy {
+        font-size:40px;
+        top:75% !important;
+      }
     }
 
   </style>
@@ -98,18 +112,22 @@
   <div class="card">
     <h1>Happy Valentine’s Day Baby 💖</h1>
     <p>
-      My dearest Vee😊😊, you are the calm to my chaos and the warmth in my cold days🧸🧸. <br> Every smile of yours is my favorite blessing, and every moment with you I hold close to my heart 💖. <br> Loving 💖 you is the most natural thing I have ever done, and I 💘promise to cherish and choose you everyday. <br> You are my today, my tomorrow💕, and every dream 💕in between. <br> I love you so very much💕💕💕.
-    <br> 
-    Love, Neithan 💖 💖.
+      My dearest Vee 😊😊, you are the calm to my chaos and the warmth in my cold days 🧸🧸. <br><br>
+      Every smile of yours is my favorite blessing, and every moment with you I hold close to my heart 💖. <br><br>
+      Loving 💖 you is the most natural thing I have ever done, and I 💘 promise to cherish and choose you every day. <br><br>
+      You are my today, my tomorrow 💕, and every dream in between. <br><br>
+      I love you so very much 💕💕💕.
+      <br><br>
+      Love, Neithan 💖💖
     </p>
   </div>
 
-  <div class="teddy" style="left:15%; top:60%;">🧸</div>
-  <div class="teddy" style="right:15%; top:60%;">🧸</div>
+  <div class="teddy" style="left:10%; top:70%;">🧸</div>
+  <div class="teddy" style="right:10%; top:70%;">🧸</div>
 
 <script>
   // Create stars
-  for(let i=0;i<150;i++){
+  for(let i=0;i<120;i++){
     let star = document.createElement("div");
     star.className = "star";
     star.style.left = Math.random()*100 + "vw";
@@ -129,7 +147,7 @@
     setTimeout(()=>heart.remove(),10000);
   }
 
-  setInterval(createHeart, 300);
+  setInterval(createHeart, 400);
 </script>
 
 </body>
